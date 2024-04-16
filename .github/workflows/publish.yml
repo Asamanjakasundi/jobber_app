@@ -4,7 +4,6 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,10 +18,9 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: |
-          echo "@TJGTO:registry=https://npm.pkg.github.com/" > build/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.MY_GITHUB_PAT }}" >> build/.npmrc
-      - name: Log GitHub PAT
-        run: echo "GitHub PAT: ${{ secrets.MY_GITHUB_PAT }}"
+          echo "GitHub PAT: ${{ secrets.MY_GITHUB_PAT }}"
+          echo @TJGTO:https://npm.pkg.github.com/ > build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${{ secrets.MY_GITHUB_PAT }}' >> build/.npmrc
       - run: npm publish
         working-directory: ./build
         env:
