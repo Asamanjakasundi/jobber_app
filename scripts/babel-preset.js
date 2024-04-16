@@ -18,5 +18,4 @@ module.exports = () => ({
       },
     ],
   ],
-  //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
 });
