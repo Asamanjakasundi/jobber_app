@@ -21,7 +21,7 @@ jobs:
       - name: Set up .npmrc
         run: |
           echo "@asamanjakasundi:registry=https://npm.pkg.github.com/" > build/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> build/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.MY_GITHUB_PAT }}" >> build/.npmrc
       - name: Publish to GitHub Package Registry
         run: npm publish
         working-directory: ./build
